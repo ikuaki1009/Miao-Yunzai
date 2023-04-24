@@ -153,7 +153,7 @@ export default class RoleDetail extends base {
     let msg = ''
     if (this.isBing) {
       let randFace = lodash.sample([26, 111, 110, 173, 177, 36, 37, 5, 9, 267, 264, 262, 265])
-      msg = [`\n尚未拥有${this.e.roleName}`, segment.face(randFace)]
+      msg = [`\n尚未拥有${this.e.roleName}`, this.e.segment.face(randFace)]
     } else {
       msg = '\n请先在米游社展示该角色'
     }

@@ -3,7 +3,6 @@ import cfg from '../../lib/config/config.js'
 import plugin from '../../lib/plugins/plugin.js'
 import fs from 'node:fs'
 import lodash from 'lodash'
-import { segment } from 'icqq'
 import { pipeline } from 'stream'
 import { promisify } from 'util'
 import fetch from 'node-fetch'
@@ -421,7 +420,7 @@ export class add extends plugin {
 
     if (msg[0] && msg[0].local) {
       if (fs.existsSync(msg[0].local)) {
-        let tmp = segment.image(msg[0].local)
+        let tmp = this.e.segment.image(msg[0].local)
         tmp.asface = msg[0].asface
         msg = tmp
       } else {
@@ -801,7 +800,7 @@ export class add extends plugin {
 
       let md5 = tmp[1].replace(/}|_|:/g, '')
 
-      msg = segment.image(`http://gchat.qpic.cn/gchatpic_new/0/0-0-${md5}/0`)
+      msg = this.e.segment.image(`http://gchat.qpic.cn/gchatpic_new/0/0-0-${md5}/0`)
       msg.asface = true
     } else if (msg.includes('{at:')) {
       let tmp = msg.match(/{at:(.+?)}/g)
@@ -819,7 +818,7 @@ export class add extends plugin {
       msg = []
       for (let face of tmp) {
         let id = face.match(/\d+/g)
-        msg.push(segment.face(id))
+        msg.push(this.e.segment.face(id))
       }
     }
 

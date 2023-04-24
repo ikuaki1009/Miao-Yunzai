@@ -252,7 +252,7 @@ export default class MysNews extends base {
     const img = await this.render(param)
 
     if (img.length > 1) {
-      img.push(segment.image(param.data.post.images[0] + '?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg'))
+      img.push(this.e.segment.image(param.data.post.images[0] + '?x-oss-process=image//resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg'))
     }
 
     return await this.replyMsg(img, `${param.data.post.subject}`)

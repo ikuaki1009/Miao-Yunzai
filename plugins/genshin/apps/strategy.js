@@ -106,12 +106,12 @@ export class strategy extends plugin {
     this.sfPath = `${this.path}/${group}/${role.name}.jpg`
 
     if (fs.existsSync(this.sfPath) && !isUpdate) {
-      await this.e.reply(segment.image(`file://${this.sfPath}`))
+      await this.e.reply(this.e.segment.image(`file://${this.sfPath}`))
       return
     }
 
     if (await this.getImg(role.name, group)) {
-      await this.e.reply(segment.image(`file://${this.sfPath}`))
+      await this.e.reply(this.e.segment.image(`file://${this.sfPath}`))
     }
   }
 

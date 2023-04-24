@@ -56,27 +56,27 @@ export class material extends plugin {
     this.imgPath = `${this.path}/${role.name}.jpg`
 
     if (fs.existsSync(this.imgPath) && !isUpdate) {
-      await this.e.reply(segment.image(`file://${this.imgPath}`))
+      await this.e.reply(this.e.segment.image(`file://${this.imgPath}`))
       return
     }
 
     if (await this.getImg(role.name)) {
-      return await this.e.reply(segment.image(`file://${this.imgPath}`))
+      return await this.e.reply(this.e.segment.image(`file://${this.imgPath}`))
     }
 
     this.imgPath = `${this.pathOther}/${role.name}.jpg`
 
     if (fs.existsSync(this.imgPath) && !isUpdate) {
-      await this.e.reply(segment.image(`file://${this.imgPath}`))
+      await this.e.reply(this.e.segment.image(`file://${this.imgPath}`))
       return
     }
 
     if (await this.getImgOther(role.name)) {
-      return await this.e.reply(segment.image(`file://${this.imgPath}`))
+      return await this.e.reply(this.e.segment.image(`file://${this.imgPath}`))
     }
 
     if (await this.getImgOther2(role.name)) {
-      return await this.e.reply(segment.image(`file://${this.imgPath}`))
+      return await this.e.reply(this.e.segment.image(`file://${this.imgPath}`))
     }
   }
 
